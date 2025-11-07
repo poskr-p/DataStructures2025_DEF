@@ -36,5 +36,21 @@ namespace Builder
                 .AddSkill("ярость");
 
         }
+        public ICharacterBuilder CreateNPC(string name, CharacterClass npcClass, string role, bool isFriendly = true)
+        {
+            var appearance = isFriendly ? "дружелюбный вид" : "угрожающий вид";
+
+            return _characterBuilder.SetName(name)
+                .SetClass(npcClass)
+                .SetLevel(5) 
+                .SetAppirance($"{role} - {appearance}")
+                .SetHealth(50)
+                .SetMana(30)
+                .SetStrenght(5)
+                .SetIntelligence(5)
+                .SetDexterity(5)
+                .AddSkill("базовые знания")
+                .AddSkill("общение");
+        }
     }
 }

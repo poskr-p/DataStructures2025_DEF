@@ -123,6 +123,45 @@ namespace Builder
             _character.Strength = Math.Clamp(strenght, 0, 10);
             return this;
         }
+        
+
+        // методы для экипировки
+        public ICharacterBuilder SetWeapon(string weapon)
+        {
+            _character.Equipment.Weapon = weapon;
+            return this;
+        }
+
+        public ICharacterBuilder SetArmor(string armor)
+        {
+            _character.Equipment.Armor = armor;
+            return this;
+        }
+
+        public ICharacterBuilder SetHelmet(string helmet)
+        {
+            _character.Equipment.Helmet = helmet;
+            return this;
+        }
+
+        public ICharacterBuilder SetBoots(string boots)
+        {
+            _character.Equipment.Boots = boots;
+            return this;
+        }
+
+        public ICharacterBuilder AddAccessory(string accessory)
+        {
+            if (!_character.Equipment.Accessories.Contains(accessory))
+                _character.Equipment.Accessories.Add(accessory);
+            return this;
+        }
+
+        public ICharacterBuilder SetEquipment(Equipment equipment)
+        {
+            _character.Equipment = equipment;
+            return this;
+        }
 
         public void Validate()
         {
@@ -136,6 +175,11 @@ namespace Builder
         {
             _character.Mana = mana;
             return this;
+        }
+        public GameCharacter GetCharacter()
+        {
+            Validate();
+            return _character;
         }
     }
 }
